@@ -23,3 +23,23 @@ mat-panel-title {
 }
 
 
+.bg {
+  background-repeat: no-repeat;
+  background-size: 32% 10px;
+  background-position: center center;
+}
+
+.pizza {
+  background-image: linear-gradient(to right, crimson, white 35%, white 65%, crimson);
+}
+
+.salad {
+  background-image: linear-gradient(to right, #14ed1b, white 35%, white 65%, #14ed1b);
+}
+
+.soup{
+  background-image: linear-gradient(to right, #edbe14, white 35%, white 65%, #edbe14);
+}
+.card-title{
+  font-weight: 550 !important;
+}
