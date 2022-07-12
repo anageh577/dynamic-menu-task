@@ -1,0 +1,53 @@
+{
+  "soups": [
+    {
+      "name": "Chicken Noodle Soup",
+      "price": 25,
+      "available": true
+    },
+    {
+      "name": "Beef Noodle Soup",
+      "price": 30,
+      "available": false
+    },
+    {
+      "name": "Chicken corn soup",
+      "price": 25,
+      "available": true
+    }
+  ],
+  "salads": [
+    {
+      "name": "Chicken Caesar Salad",
+      "price": 60,
+      "available": true
+    },
+    {
+      "name": "Mediterranean Chopped Salad",
+      "price": 70,
+      "available": true
+    }
+  ],
+  "pizzas": [
+    {
+      "name": "Pepperoni Pizza",
+      "price": 90,
+      "available": true
+    },
+    {
+      "name": "Margherita Pizza",
+      "price": 70,
+      "available": true
+    },
+    {
+      "name": "Hawaiian Pizza",
+      "price": 100,
+      "available": false
+    },
+    {
+      "name": "Veggie Pizza",
+      "price": 80,
+      "available": true
+    }
+  ]
+}

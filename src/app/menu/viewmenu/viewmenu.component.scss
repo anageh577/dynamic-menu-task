@@ -1,0 +1,25 @@
+.status-danger {
+  color: red;
+}
+
+.recipe {
+  cursor: pointer;
+}
+
+.recipe:hover {
+  color: red;
+}
+
+mat-panel-title {
+  color: #007bff;
+}
+
+.update-button:disabled {
+  cursor: not-allowed;
+}
+
+.card {
+  margin-top: 10px;
+}
+
+

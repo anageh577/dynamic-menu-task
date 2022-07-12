@@ -1,0 +1,128 @@
+<div class="container-fluid pt-4">
+  <div class="row">
+    <div class="col-md-3">
+      <mat-accordion>
+
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Pizzas
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p class="recipe" (click)="choose('pizzas',pizza?.name)" *ngFor="let pizza of pizzas">
+            {{pizza?.name}}</p>
+        </mat-expansion-panel>
+
+
+        <mat-expansion-panel [expanded]="false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Salads
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p class="recipe" (click)="choose('salads',salad?.name)" *ngFor="let salad of salads">{{salad?.name}}</p>
+        </mat-expansion-panel>
+
+
+        <mat-expansion-panel [expanded]="false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Soups
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p class="recipe" (click)="choose('soups',soup?.name)" *ngFor="let soup of soups">{{soup?.name}}</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+    </div>
+    <div class="col-md-9 mx-auto" *ngIf="update">
+      <h1 class="text-center pt-4">
+        Update {{type}}
+      </h1>
+      <form [formGroup]="recipeForm" (ngSubmit)="updateRecipe()">
+        <label class="label col-form-label"> Name</label>
+        <input type="text" class="form-control" placeholder="Name" formControlName="name">
+        <ng-container *ngIf="recipeForm.controls.name.touched">
+          <p class="status-danger" *ngIf="recipeForm.controls.name.errors?.required">
+            Name is required !
+          </p>
+        </ng-container>
+
+
+        <label class="label col-form-label"> Price</label>
+        <input type="number" class="form-control" placeholder="Price" formControlName="price">
+        <ng-container *ngIf="recipeForm.controls.price.touched">
+          <p class="status-danger" *ngIf="recipeForm.controls.price.errors?.required">
+            Price is required !
+          </p>
+        </ng-container>
+
+
+        <label class="label col-form-label"> Available</label>
+        <select class="form-control" placeholder="available" formControlName="available">
+          <option [ngValue]="true">True</option>
+          <option [ngValue]="false">False</option>
+        </select>
+        <ng-container *ngIf="recipeForm.controls.available.touched">
+          <p class="status-danger" *ngIf="recipeForm.controls.available.errors?.required">
+            Avalaibility is required !
+          </p>
+        </ng-container>
+        <br>
+        <div class="row container justify-content-end">
+          <button class="update-button btn btn-primary" type="submit"
+            [disabled]="!recipeForm.valid && (type == 'Recipe')">Update</button>
+            <button class="update-button btn btn-danger ml-2" (click)="update = false">Cancel</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-9 mx-auto" *ngIf="!update">
+      <h1 class="text-center after">Pizzas</h1>
+      <div class="row">
+        <div class="col-md-4" *ngFor="let pizza of pizzas">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">{{pizza.name}}</h3>
+              <p class="card-text">Price: {{pizza.price}}</p>
+              <h2 *ngIf="pizza.available"><span class="badge badge-success">Available</span></h2>
+              <h2 *ngIf="!pizza.available"><span class="badge badge-danger">Not Available</span></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+<hr>
+      <h1 class="text-center">Salads</h1>
+      <div class="row">
+
+        <div class="col-md-4" *ngFor="let salad of salads">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">{{salad.name}}</h3>
+              <p class="card-text">Price: {{salad.price}}</p>
+              <h2 *ngIf="salad.available"><span class="badge badge-success">Available</span></h2>
+              <h2 *ngIf="!salad.available"><span class="badge badge-danger">Not Available</span></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+
+      <h1 class="text-center">Soups</h1>
+      <div class="row">
+
+        <div class="col-md-4" *ngFor="let soup of soups">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">{{soup.name}}</h3>
+              <p class="card-text">Price: {{soup.price}}</p>
+              <h2 *ngIf="soup.available"><span class="badge badge-success">Available</span></h2>
+              <h2 *ngIf="!soup.available"><span class="badge badge-danger">Not Available</span></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>
+
+  </div>
+</div>
