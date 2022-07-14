@@ -23,39 +23,45 @@
         Update {{type}}
       </h1>
       <form [formGroup]="recipeForm" (ngSubmit)="updateRecipe()">
-        <label class="label col-form-label"> Name</label>
-        <input type="text" class="form-control" placeholder="Name" formControlName="name">
-        <ng-container *ngIf="recipeForm.controls.name.touched">
-          <p class="status-danger" *ngIf="recipeForm.controls.name.errors?.required">
-            Name is required !
-          </p>
-        </ng-container>
+        <div formArrayName="recipes">
+          <div *ngFor="let skill of recipes.controls; let i=index">
+            <div [formGroupName]="i">
+              <label class="label col-form-label"> Name</label>
+              <input type="text" class="form-control" placeholder="Name" formControlName="name">
+              <ng-container *ngIf="recipeForm.controls['recipes']['controls'][i]['controls']['name'].touched">
+                <p class="status-danger" *ngIf="recipeForm.controls['recipes']['controls'][i]['controls']['name'].errors?.required">
+                  Name is required !
+                </p>
+              </ng-container>
 
 
-        <label class="label col-form-label"> Price</label>
-        <input type="number" class="form-control" placeholder="Price" formControlName="price">
-        <ng-container *ngIf="recipeForm.controls.price.touched">
-          <p class="status-danger" *ngIf="recipeForm.controls.price.errors?.required">
-            Price is required !
-          </p>
-        </ng-container>
+              <label class="label col-form-label"> Price</label>
+              <input type="number" class="form-control" placeholder="Price" formControlName="price">
+              <ng-container *ngIf="recipeForm.controls['recipes']['controls'][i]['controls']['price'].touched">
+                <p class="status-danger" *ngIf="recipeForm.controls['recipes']['controls'][i]['controls']['price'].errors?.required">
+                  Price is required !
+                </p>
+              </ng-container>
 
 
-        <label class="label col-form-label"> Available</label>
-        <select class="form-control" placeholder="available" formControlName="available">
-          <option [ngValue]="true">True</option>
-          <option [ngValue]="false">False</option>
-        </select>
-        <ng-container *ngIf="recipeForm.controls.available.touched">
-          <p class="status-danger" *ngIf="recipeForm.controls.available.errors?.required">
-            Avalaibility is required !
-          </p>
-        </ng-container>
-        <br>
-        <div class="row container justify-content-end">
-          <button class="update-button btn btn-primary" type="submit"
-            [disabled]="!recipeForm.valid && (type == 'Recipe')">Update</button>
-          <button class="update-button btn btn-danger ml-2" (click)="update = false">Cancel</button>
+              <label class="label col-form-label"> Available</label>
+              <select class="form-control" placeholder="available" formControlName="available">
+                <option [ngValue]="true">True</option>
+                <option [ngValue]="false">False</option>
+              </select>
+              <ng-container *ngIf="recipeForm.controls['recipes']['controls'][i]['controls']['available'].touched">
+                <p class="status-danger" *ngIf="recipeForm.controls['recipes']['controls'][i]['controls']['available'].errors?.required">
+                  Avalaibility is required !
+                </p>
+              </ng-container>
+              <br>
+              <div class="row container justify-content-end">
+                <button class="update-button btn btn-primary" type="submit"
+                  [disabled]="!recipeForm.valid && (type == 'Recipe')">Update</button>
+                <button class="update-button btn btn-danger ml-2" (click)="update = false">Cancel</button>
+              </div>
+            </div>
+          </div>
         </div>
       </form>
     </div>
