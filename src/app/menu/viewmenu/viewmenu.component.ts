@@ -61,7 +61,5 @@ export class ViewmenuComponent implements OnInit {
   get recipes(): FormArray {
     return this.recipeForm.get("recipes") as FormArray;
   }
-  getrecipes() {
-    return this.recipeForm.get("recipes") as FormArray;
-  }
+
 }
