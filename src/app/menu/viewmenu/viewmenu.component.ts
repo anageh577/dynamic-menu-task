@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CallapisService } from 'src/app/services/call-api.service';
 import { HelperMethodService } from 'src/app/services/helpermethod.service';
-import { Recipes } from 'src/app/services/recipes.model';
 
 @Component({
   selector: 'app-viewmenu',
@@ -11,7 +10,7 @@ import { Recipes } from 'src/app/services/recipes.model';
 })
 export class ViewmenuComponent implements OnInit {
   panelOpenState = true;
-  type = 'Recipe';
+  type;
   recipeForm: FormGroup;
   recipe;
   allData;
