@@ -23,23 +23,21 @@ mat-panel-title {
 }
 
 
-.bg {
+.textstyle .bg {
   background-repeat: no-repeat;
   background-size: 55% 10px;
   background-position: center center;
 }
 
-.pizza {
-  background-image: linear-gradient(to right, crimson, white 35%, white 65%, crimson);
-}
-
-.salad {
+.textstyle:nth-child(odd) .bg {
   background-image: linear-gradient(to right, #14ed1b, white 35%, white 65%, #14ed1b);
 }
-
-.soup{
+.textstyle:nth-child(even) .bg {
+  background-image: linear-gradient(to right, crimson, white 35%, white 65%, crimson);
+}
+.textstyle:nth-child(odd):not(:nth-child(3n+3)) .bg {
   background-image: linear-gradient(to right, #edbe14, white 35%, white 65%, #edbe14);
 }
-.card-title{
+.card-title {
   font-weight: 550 !important;
 }

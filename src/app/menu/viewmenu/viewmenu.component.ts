@@ -11,14 +11,12 @@ import { Recipes } from 'src/app/services/recipes.model';
 })
 export class ViewmenuComponent implements OnInit {
   panelOpenState = true;
-  pizzas: Recipes[] = [];
-  salads: Recipes[] = [];
-  soups: Recipes[] = [];
   type = 'Recipe';
   recipeForm: FormGroup;
   recipe;
   allData;
   update = false;
+  cateogries: any[] = []
   constructor(
     public apiService: CallapisService,
     private formBuilder: FormBuilder,
@@ -33,9 +31,9 @@ export class ViewmenuComponent implements OnInit {
   ngOnInit(): void {
     this.apiService.allrecipes.subscribe((res: any) => {
       this.allData = res;
-      this.pizzas = this.allData.pizzas;
-      this.salads = this.allData.salads;
-      this.soups = this.allData.soups;
+      for (let category in this.allData) {
+        this.cateogries.push(category)
+      }
     }, err => {
     })
   }
@@ -54,7 +52,6 @@ export class ViewmenuComponent implements OnInit {
     this.recipe = this.recipeForm.value;
     this.helperMethod.openSnackBar('Recipe Updated');
     this.update = false;
-
   }
 
 }
